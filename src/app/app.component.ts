@@ -82,4 +82,10 @@ unContact = {
 
     this.contactProfil = contactCliqueParMonUtilisateur;
   }
+
+  addContact(contact: void) {
+    this.mesContacts.push(contact);
+
+
+  }
 }

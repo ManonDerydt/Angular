@@ -1,0 +1,21 @@
+<div class="jumbotron" *ngIf="contactProfil">
+  <h1 class="display-4">{{contactProfil.name}}</h1>
+  <p class="lead">{{contactProfil.email}}</p>
+  <p class="lead">{{contactProfil.tel}}</p>
+  <hr class="my-4">
+  <!--
+      Exemple de Two Way Data Binding
+      Banana in the box
+      Le Model impacte la vue
+      La vue impacte le model
+  -->
+  <input type="text"
+         [(ngModel)]="contactProfil.name"
+         class="form-controll">
+</div>
+<div class="jumbotron" *ngIf="!contactProfil">
+  <h1 class="display-4">Mes contacts</h1>
+  <p class="lead">Choisissez un contact dans le menu à gauche</p>
+  <hr class="my-4">
+
+</div>

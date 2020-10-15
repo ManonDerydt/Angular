@@ -1,21 +1,22 @@
-<!--<h1>{{ title }}</h1>-->
-
-<!--<h3>-->
-<!--  {{ unContact.name}}-->
-<!--  <small>{{unContact.email}}</small>-->
-<!--</h3>-->
-<!--<ul>-->
-<!--  <li *ngFor="let contact of mesContacts">-->
-<!--    {{contact.name + ' ' + contact.email}}-->
-<!--  </li>-->
-<!--</ul>-->
+<!--
+<h1>{{ title }}</h1>
+<h3>
+  {{ unContact.name }}
+  <small>{{ unContact.email }}</small>
+</h3>
+<ul>
+  <li *ngFor="let contact of mesContacts">
+    {{ contact.name + ' ' + contact.email }}
+  </li>
+</ul>
+-->
 
 <div class="container">
   <header class="mb-4">
     <nav class="navbar navbar-dark bg-dark">
       <div class="navbar-header">
         <a href="/" class="navbar-brand">
-          {{title}}
+          {{ title }}
         </a>
       </div>
     </nav>
@@ -29,40 +30,24 @@
         <a href="#"
            *ngFor="let contact of mesContacts"
            (click)="displayContact(contact)"
-           [class.active]= "contact === contactProfil"
+           [class.active]="contact === contactProfil"
            class="list-group-item list-group-item-action">
-          {{contact.name}}
+          {{ contact.name }}
         </a>
+      </div> <!-- /.list-group -->
+      <app-new-contact (newContactEvent)="addContact($event)"></app-new-contact>
+    </div> <!-- /.col-sm-4 -->
 
-      </div>
-
-    </div><!-- /.col-sm-4-->
-
-    <!-- Profil du contact -->
+    <!--  Profil du contact -->
     <div class="col-sm-8">
-      <div class="jumbotron" *ngIf="contactProfil">
-        <h1 class="display-4">{{contactProfil.name}}</h1>
-        <p class="lead">{{contactProfil.email}}</p>
-        <p class="lead">{{contactProfil.tel}}</p>
-        <hr class="my-4">
-        <!--
-            Exemple de Two Way Data Binding
-            Banana in the box
-            Le Model impacte la vue
-            La vue impacte le model
-        -->
-        <input type="text"
-               [(ngModel)]="contactProfil.name"
-               class="form-controll">
-      </div>
-      <div class="jumbotron" *ngIf="!contactProfil">
-        <h1 class="display-4">Mes contacts</h1>
-        <p class="lead">Choisissez un contact dans le menu à gauche</p>
-        <hr class="my-4">
+      <!--
+        Ici, j'affiche mon composant
+        ProfilComponent.
+      -->
+      <app-profil [contactProfil]="contactProfil"></app-profil>
+    </div> <!-- /.col-sm-8 -->
 
-      </div>
-    </div> <!-- /.col-sm-8-->
-
-  </div> <!-- /.row-->
+  </div> <!-- /.row -->
 
 </div> <!-- /.container -->
+
